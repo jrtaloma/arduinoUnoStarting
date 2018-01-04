@@ -30,7 +30,6 @@ BINS= uart_test.elf\
       eeprom_test.elf\
       digio_test.elf\
       pwm_test.elf\
-      blink_test.elf\
 
 .phony:	clean all
 
