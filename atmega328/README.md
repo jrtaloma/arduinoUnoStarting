@@ -1,6 +1,7 @@
 # C - Arduino Uno
 
 **IMPORTANTE: i file qui presenti sono stati riadattati per la versione ATmega328**
+
 I file originali presentati a lezione per ATmega2560 si trovano su [https://gitlab.com/grisetti/sistemi_operativi_2016_17/tree/master/source/14_microcontrollers/atmega2560](https://gitlab.com/grisetti/sistemi_operativi_2016_17/tree/master/source/14_microcontrollers/atmega2560) 
 
 **Installazione Arduino**
@@ -13,7 +14,7 @@ I file originali presentati a lezione per ATmega2560 si trovano su [https://gitl
 
 **Flashing su Arduino ed esecuzione**
 
-`$ make <nome programma>.hex
+`$ make <nome programma>.hex`
 
 **Bonus**
 
