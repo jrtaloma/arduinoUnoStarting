@@ -13,11 +13,12 @@ AVRDUDE_FLAGS += $(AVRDUDE_VERBOSE)
 AVRDUDE_FLAGS += $(AVRDUDE_ERASE_COUNTER)
 AVRDUDE_FLAGS += -V -F -C /etc/avrdude.conf
 
-INCLUDES=delay.h  digio.h  pins.h
+INCLUDES=delay.h  digio.h  pins.h  uart.h
 
 OBJS=pins.o\
      delay.o\
      digio.o\
+     uart.o\
 
 BINS=blink_test.elf\
 
