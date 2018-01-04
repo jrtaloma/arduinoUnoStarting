@@ -27,3 +27,6 @@ int UART_rxBufferFull(struct UART* uart);
 
 // returns the number of available characters in the tx buffer
 int UART_txBufferFree(struct UART* uart);
+
+// returns the number of characters to be read fron the rx buffer
+int UART_txBufferFull(struct UART* uart);
