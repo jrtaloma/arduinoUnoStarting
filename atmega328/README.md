@@ -4,9 +4,11 @@
 
 I file originali presentati a lezione per ATmega2560 si trovano su [https://gitlab.com/grisetti/sistemi_operativi_2016_17/tree/master/source/14_microcontrollers/atmega2560](https://gitlab.com/grisetti/sistemi_operativi_2016_17/tree/master/source/14_microcontrollers/atmega2560) 
 
-**Installazione Arduino**
+**Installazione Arduino e Minicom**
 
 `$ sudo apt-get install arduino`
+
+`$ sudo apt-get install minicom`
 
 **Compilazione**
 
@@ -15,6 +17,10 @@ I file originali presentati a lezione per ATmega2560 si trovano su [https://gitl
 **Flashing su Arduino ed esecuzione**
 
 `$ make <nome programma>.hex`
+
+**Monitorare i messaggi di output di Arduino**
+
+`$ minicom -D /dev/ttyACM0 -b 115200`
 
 **Bonus**
 
