@@ -18,4 +18,4 @@ I file originali presentati a lezione per ATmega2560 si trovano su [https://gitl
 
 **Bonus**
 
-L'Hello World di Arduino: `blink_test.c`
+L'Hello World di Arduino nella cartella `Blink_Test`
