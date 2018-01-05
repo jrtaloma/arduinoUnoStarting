@@ -4,13 +4,11 @@
 
 I file originali presentati a lezione per ATmega2560 si trovano su [https://gitlab.com/grisetti/sistemi_operativi_2016_17/tree/master/source/14_microcontrollers/atmega2560](https://gitlab.com/grisetti/sistemi_operativi_2016_17/tree/master/source/14_microcontrollers/atmega2560) 
 
-**Installazione di Arduino, Screen, Minicom**
+**Installazione di Arduino e Screen**
 
 `$ sudo apt-get install arduino`
 
 `$ sudo apt-get install screen`
-
-`$ sudo apt-get install minicom`
 
 **Compilazione**
 
@@ -18,13 +16,11 @@ I file originali presentati a lezione per ATmega2560 si trovano su [https://gitl
 
 **Flashing su Arduino ed esecuzione**
 
-`$ make <nome programma>.hex`
+`$ make <nome_programma>.hex`
 
-**Monitorare i messaggi di output di Arduino. Scegliere uno dei due comandi**
+**Monitorare i messaggi di output di Arduino**: per uscire dalla shell di screen 'Ctrl + a', '\', 'y'
 
-`$ screen /dev/ttyACM0 9600`
-
-`$ minicom -D /dev/ttyACM0 -b 115200`
+`$ screen /dev/ttyACM0 115200`
 
 **Bonus**
 
