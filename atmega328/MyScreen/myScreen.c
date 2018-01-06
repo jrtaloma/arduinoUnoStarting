@@ -7,9 +7,9 @@
 #define BUF_SIZE 300
 
 int main() {
-    char buf[BUF_SIZE];
-    int fd = open("/dev/ttyACM0", O_RDWR);
-    if (fd < 0) {
+	char buf[BUF_SIZE];
+	int fd = open("/dev/ttyACM0", O_RDWR);
+	if (fd < 0) {
 		perror("error");
 		exit(-1);
 	}
@@ -20,12 +20,12 @@ int main() {
 		if (n <= 0) {
 			perror("error");
 			exit(-1);
-		}	
+		}
 		if (buf[bytes_read] == '\0') {
 			printf("\n");
-		}	
+		}
 		printf("%c", buf[bytes_read += (bytes_read%BUF_SIZE)]); // buffer circolare
-    }
+	}
 	
-    return 0;
+	return 0;
 }

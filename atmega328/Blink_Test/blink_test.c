@@ -34,12 +34,12 @@ int main(void){
 	while(1){
 		// turn the LED on (HIGH is the voltage level)
 		DigIO_setValue(led, HIGH);
-		printString("On ");
+		printString("On");
 		delayMs(1000);
 		
 		// turn the LED off by making the voltage LOW
 		DigIO_setValue(led, LOW);
-		printString("Off ");
+		printString("Off");
 		delayMs(1000);
 	}
 	
