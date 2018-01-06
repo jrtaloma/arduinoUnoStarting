@@ -1,27 +1,13 @@
-# C - Arduino Uno
+# uart_test.c
 
-**IMPORTANTE: i file qui presenti sono stati riadattati per la versione ATmega328**
+`uart_test.c` invia al PC la stringa stesssa che è stata trasmessa via seriale (echo).
+Il codice originale è stato modificato per evitare che sia trasmesso un solo carattere alla volta, invece adesso l'intera stringa fino al terminatore '/0'.
+Eseguire il programma `sendOneByte.c`.
 
-I file originali presentati a lezione per ATmega2560 si trovano su [https://gitlab.com/grisetti/sistemi_operativi_2016_17/tree/master/source/14_microcontrollers/atmega2560](https://gitlab.com/grisetti/sistemi_operativi_2016_17/tree/master/source/14_microcontrollers/atmega2560) 
+**Compilazione, flashing su Arduino ed esecuzione**
 
-**Installazione di Arduino e Screen**
+`$ make uart_test.hex`
 
-`$ sudo apt-get install arduino`
+`$ gcc -o sendOneByte sendOneByte.c`
 
-`$ sudo apt-get install screen`
-
-**Compilazione**
-
-`$ make`
-
-**Flashing su Arduino ed esecuzione**
-
-`$ make <nome_programma>.hex`
-
-**Monitorare i messaggi di output di Arduino**: per uscire dalla shell di screen 'Ctrl + a', '\', 'y'
-
-`$ screen /dev/ttyACM0 115200`
-
-**Bonus**
-
-L'Hello World di Arduino nella cartella `Blink_Test`
+`$ ./sendOneByte`
