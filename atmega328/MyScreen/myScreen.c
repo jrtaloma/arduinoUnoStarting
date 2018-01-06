@@ -9,6 +9,10 @@
 int main() {
     char buf[BUF_SIZE];
     int fd = open("/dev/ttyACM0", O_RDWR);
+    if (fd < 0) {
+		perror("error");
+		exit(-1);
+	}
 	
 	int bytes_read = 0;
 	while (1) {

@@ -7,12 +7,19 @@
 int main() {
     char byte;
     int fd = open("/dev/ttyACM0", O_RDWR);
+	if (fd < 0) {
+		perror("error");
+		exit(-1);
+	}
     
     char* s = "It's beautiful";
 	int l = strlen(s);	
 	int i;
 	for (i=0; i<l; i++, s++) {
-		write(fd, s, 1);
+		if (write(fd, s, 1) < 1) {
+			perror("error");
+			exit(-1);
+		}	
 	}
 	write(fd, "\0", 1);
 	
