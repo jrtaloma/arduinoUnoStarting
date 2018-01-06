@@ -1,5 +1,3 @@
-// https://unix.stackexchange.com/questions/138342/how-to-read-write-to-tty-device
-
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>    
