@@ -2,7 +2,7 @@
 
 `$ make blink_test.hex`
 
-`gcc -o myScreen myScreen`
+`gcc -o myScreen myScreen.c`
 
 **Monitorare i messaggi di output di Arduino**: per uscire dalla shell di screen 'Ctrl + a', '\', 'y'
 
