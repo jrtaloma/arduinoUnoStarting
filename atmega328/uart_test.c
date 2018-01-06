@@ -17,16 +17,20 @@ int main(void){
     rx_message[0]=0;
     int size=0;
     while(1){
-      sprintf(tx_message, "buffer rx: %d msg: [%s]\n",
-	      UART_rxBufferFull(uart),
-	      rx_message);
+      sprintf(tx_message, "Received msg: [%s]\n", rx_message);
       printString(tx_message);
-      uint8_t c= UART_getChar(uart);
-      rx_message[size]=c;
-      ++size;
-      rx_message[size]=0;
-      if (c=='\n' || c=='\r' || c==0)
-	break;
+      
+      while (1) {
+		uint8_t c= UART_getChar(uart);
+		rx_message[size]=c;
+		++size;
+		rx_message[size]=0;
+		if (c=='\0' || c=='\n' || c=='\r' || c==0) {
+			size = 0;
+			break;
+		}	
+		continue;
+	  }
     }
   }
 }
