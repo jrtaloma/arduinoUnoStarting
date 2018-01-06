@@ -21,6 +21,7 @@ void printString(char* s){
 	int l=strlen(s);
 	for(int i=0; i<l; ++i, ++s)
 		UART_putChar(uart, (uint8_t) *s);
+	UART_putChar(uart, (uint8_t) '\0');	
 }
 
 int main(void){
