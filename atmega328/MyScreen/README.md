@@ -12,7 +12,7 @@ In alternativa installare il tool più usato:
 
 `$ sudo apt-get install screen`
 
-`$ screen dev/ttyACM0 115200`
+`$ screen /dev/ttyACM0 115200`
 
 
 
