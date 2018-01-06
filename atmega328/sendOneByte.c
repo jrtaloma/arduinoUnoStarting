@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <fcntl.h>    
 #include <string.h>
+#include <stdlib.h>
 
 int main() {
     char byte;
@@ -20,6 +21,10 @@ int main() {
 	
 		while (1) {
 			ssize_t n = read(fd, &byte, 1);
+			if (n <= 0) {
+				perror("error");
+				exit(-1);
+			}	
 			printf("%c", byte);
 			if (byte == '\0' || byte == '\n' || byte == '\r')  {
 				break;
