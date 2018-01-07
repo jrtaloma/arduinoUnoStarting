@@ -1,14 +1,16 @@
+CC = gcc -g
+
+CFLAGS = -I ./include
+
+CC_OPTS = -Wall --std=gnu99 -Wstrict-prototypes
+
 OBJECTS = hellomake.c hellofunc.c
 
-HEADERS = hellomake.h
-
-CC = gcc
-
-CFLAGS = -g -Wall
+HEADERS = hellomake.h\
 
 PROGRAM_NAME = hellomake
 
-# eventually LIBS = <libraries>
+LIBS =
 
 BINS = hellomake\
 
@@ -18,8 +20,4 @@ $(PROGRAM_NAME):$(OBJECTS)
 .PHONY: clean
 
 clean:
-	rm -rf *.o *~ $(BINS)
-
-# eventually
-# clean:
-#	 rm -rf *.o *~ $(LIBS) $(BINS)
+	rm -rf *.o *~ $(LIBS) $(BINS)
