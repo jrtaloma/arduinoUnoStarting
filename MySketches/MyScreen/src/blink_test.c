@@ -12,7 +12,7 @@
 #define HIGH 1
 #define LOW 0
 
-// pin 13 has an LED connected on most Arduino boards
+// pin 13 has a LED connected on most Arduino boards
 int led = 13;
 
 struct UART* uart;
@@ -21,7 +21,7 @@ void printString(char* s){
 	int l=strlen(s);
 	for(int i=0; i<l; ++i, ++s)
 		UART_putChar(uart, (uint8_t) *s);
-	UART_putChar(uart, (uint8_t) '\0'); // 'IMPORTANT: '\0' serves to mark the end of the string
+	// UART_putChar(uart, (uint8_t) '\0'); // 'IMPORTANT: '\0' serves to mark the end of the string
 }
 
 int main(void){
@@ -34,12 +34,12 @@ int main(void){
 	while(1){
 		// turn the LED on (HIGH is the voltage level)
 		DigIO_setValue(led, HIGH);
-		printString("On");
+		printString("On\n");
 		delayMs(1000);
 		
 		// turn the LED off by making the voltage LOW
 		DigIO_setValue(led, LOW);
-		printString("Off");
+		printString("Off\n");
 		delayMs(1000);
 	}
 	
