@@ -1,7 +1,9 @@
 # C - Arduino Uno
 
 N.B.
-Il codice sorgente è lo stesso che si trova al link [https://github.com/dataplayer/Blinking-LED-on-Arduino](https://github.com/dataplayer/Blinking-LED-on-Arduino)
+* Per imparare le operazioni di I/O in AVR >>>>> [http://maxembedded.com/2011/06/port-operations-in-avr/](http://maxembedded.com/2011/06/port-operations-in-avr/)
+
+* Pin Mapping ATmega328 >>>>> [https://www.arduino.cc/en/Hacking/PinMapping168](https://www.arduino.cc/en/Hacking/PinMapping168)
 
 **Installazione Arduino**
 
