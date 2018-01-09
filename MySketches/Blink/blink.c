@@ -2,7 +2,7 @@
 #include <util/delay.h>
 
 int main() {
-	/* set DDRB.5 for output*/
+	/* set DDRB.5 for output */
 	DDRB = (1<<DDB5);
 	
 	while(1) {
