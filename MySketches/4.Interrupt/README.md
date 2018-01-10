@@ -7,7 +7,3 @@
 `$ make interrupt_test.hex`
 
 Inviando tramite terminale un messaggio il led 13 si illuminerà per 500 ms: `$ echo "Turn ON" > /dev/ttyACM0`
-
-
-
-

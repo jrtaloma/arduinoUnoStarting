@@ -52,7 +52,7 @@ int main(void){
 	DigIO_setDirection(buttonPin, Input); // buttonPin as an input
 	DigIO_setValue(buttonPin, HIGH); // pull up resistor on buttonPin
 	PCICR = (1<<PCIE0); // enable Pin Change 0 interrupt
-    PCMSK0 = (1<<PCINT4);
+	PCMSK0 = (1<<PCINT4);
 	
 	uart=UART_init("uart_0", 115200);
 	
