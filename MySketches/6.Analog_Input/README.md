@@ -1,5 +1,7 @@
 # Analog_Input
 
+![GitHub Logo](fotoresistore.jpg)
+
 Nel mondo reale grandezze come la temperatura e la pressione sono analogiche: la funzione del convertitore analogico digitale (ADC) è di convertire il segnale analogico registrato dal sensore in un segnale digitale perché possa essere elaborato dal microcontrollore, che è appunto digitale.
 
 In questo sketch l'MCU legge in input il valore registrato dalla fotoresistenza collegata al pin A5. L'ADC inzia la conversione e una volta completata genera un segnale che viene catturato. L'ISR legge il valore convertito (scala da 0 a 1023) e, se risulta minore di 128, accende per 1000 ms il LED collegato al pin 13 e invia un messaggio via seriale.

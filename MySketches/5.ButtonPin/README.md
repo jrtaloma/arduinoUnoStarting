@@ -1,5 +1,7 @@
 # Accensione del LED tramite interrupt
 
+![GitHub Logo](button_test.jpg)
+
 Sono presenti due versioni: button collegato al pin 2 e button collegato al pin 12. La gestione del pin change interrupt (PCINTx) varia di conseguenza ed occorre pertanto controllare il mapping della scheda Arduino. 
 
 Il microcontrollore non esegue alcun codice nel loop. La pressione del bottone genera un pin change interrupt che provoca l'accensione del LED e l'invio di un messaggio via seriale (On/Off).
