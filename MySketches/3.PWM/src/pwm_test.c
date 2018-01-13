@@ -9,7 +9,7 @@ int main(void){
   // all pins as inputs with pull up resistors
   PWM_init();
   
-  // we enable all pwm outputs
+  // enable pin 6 as pwm output
   PWM_enable(pinLed, 1);
 
   uint8_t start_pin=0;
