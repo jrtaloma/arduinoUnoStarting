@@ -6,9 +6,6 @@ void adc_init(void) {
 	
 	// ADC Enable and prescaler of 128 ----> 16 MHz/128 = 125 kHz
 	ADCSRA = (1<<ADEN)|(1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0);
-
-	// enable ADC interrupt
-	ADCSRA |= (1<<ADIE);
 }
 
 uint16_t adc_read(uint8_t ch) {

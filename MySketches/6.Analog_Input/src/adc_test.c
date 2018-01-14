@@ -45,7 +45,9 @@ int main(void){
 
 	uart=UART_init("uart_0", 115200);
 	
-	adc_init(); // initialize adc and enable ADC interrupt
+	adc_init(); // initialize adc
+	
+	ADCSRA |= (1<<ADIE); // enable ADC interrupt
 	
 	sei(); // enable global interrupts
 	
