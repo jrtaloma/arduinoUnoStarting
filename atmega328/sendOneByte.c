@@ -1,22 +1,43 @@
 #include <stdio.h>
 #include <unistd.h>
-#include <fcntl.h>    
+#include <fcntl.h>
+#include <termios.h>
 #include <string.h>
 #include <stdlib.h>
 
+speed_t baud = B115200; /* baud rate */
+
 int main() {
 	char byte;
+	char* s;
+	
 	int fd = open("/dev/ttyACM0", O_RDWR);
 	if (fd < 0) {
 		perror("error");
 		exit(-1);
 	}
 	
-	char* s = "It's beautiful";
+	/* set the other settings */
+	struct termios settings;
+	tcgetattr(fd, &settings);
+
+	cfsetospeed(&settings, baud); /* baud rate */
+	settings.c_cflag &= ~PARENB; /* no parity */
+	settings.c_cflag &= ~CSTOPB; /* 1 stop bit */
+	settings.c_cflag &= ~CSIZE;
+	settings.c_cflag |= CS8 | CLOCAL; /* 8 bits */
+	settings.c_lflag = ICANON; /* canonical mode */
+	settings.c_oflag &= ~OPOST; /* raw output */
+
+	tcsetattr(fd, TCSANOW, &settings); /* apply the settings */
+	tcflush(fd, TCOFLUSH);
+	
+	RESTART: printf("Inserisci un messaggio: ");
+	scanf("%s", s);
 	int l = strlen(s);	
 	int i;
-	for (i=0; i<l; i++, s++) {
-		if (write(fd, s, 1) < 1) {
+	for (i=0; i<l; i++) {
+		if (write(fd, s+i, 1) < 1) {
 			perror("error");
 			exit(-1);
 		}
@@ -36,6 +57,7 @@ int main() {
 				break;
 			}
 		}
+		goto RESTART;
 	}
 
 	return 0;

@@ -16,11 +16,12 @@ int main(void){
     char rx_message[300];
     rx_message[0]=0;
     int size=0;
+    goto LOOP; // this is needed to avoid the sending of an empty message on startup
     while(1){
       sprintf(tx_message, "Received msg: [%s]\n", rx_message);
       printString(tx_message);
       
-      while (1) {
+      LOOP: while (1) {
 		uint8_t c= UART_getChar(uart);
 		rx_message[size]=c;
 		++size;
