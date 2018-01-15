@@ -5,11 +5,13 @@
 #include <string.h>
 #include <stdlib.h>
 
+#define STR_LENGTH 300
+
 speed_t baud = B115200; /* baud rate */
 
 int main() {
 	char byte;
-	char* s;
+	char s[STR_LENGTH];
 	
 	int fd = open("/dev/ttyACM0", O_RDWR);
 	if (fd < 0) {
@@ -33,9 +35,12 @@ int main() {
 	tcflush(fd, TCOFLUSH);
 	
 	RESTART: printf("Inserisci un messaggio: ");
-	scanf("%s", s);
-	int l = strlen(s);	
+	fgets(s, STR_LENGTH, stdin);
+	if ((strlen(s) > 0) && (s[strlen(s) - 1] == '\n'))
+		s[strlen(s) - 1] = '\0';
+		
 	int i;
+	int l = strlen(s);
 	for (i=0; i<l; i++) {
 		if (write(fd, s+i, 1) < 1) {
 			perror("error");
@@ -44,21 +49,18 @@ int main() {
 	}
 	write(fd, "\0", 1);
 
-	while(1) {
-		usleep(2500);
-		while (1) {
-			ssize_t n = read(fd, &byte, 1);
-			if (n <= 0) {
-				perror("error");
-				exit(-1);
-			}
-			printf("%c", byte);
-			if (byte == '\0' || byte == '\n' || byte == '\r')  {
-				break;
-			}
+	while (1) {
+		ssize_t n = read(fd, &byte, 1);
+		if (n <= 0) {
+			perror("error");
+			exit(-1);
 		}
-		goto RESTART;
+		printf("%c", byte);
+		if (byte == '\0' || byte == '\n' || byte == '\r')  {
+			break;
+		}
 	}
+	goto RESTART;
 
 	return 0;
 }
