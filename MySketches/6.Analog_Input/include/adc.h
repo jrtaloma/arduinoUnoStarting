@@ -1,3 +1,6 @@
+#pragma once
+#include <stdint.h>
+
 /* initialize adc */
 void adc_init(void);
 
