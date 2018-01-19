@@ -1,6 +1,6 @@
 PREFIX=.
 CC=avr-gcc
-CC_OPTS=-Wall --std=gnu99 -DF_CPU=16000000UL  -O3 -funsigned-char -funsigned-bitfields  -fshort-enums -Wall -Wstrict-prototypes -mmcu=atmega328 -I$(PREFIX)/include
+CC_OPTS=-Wall --std=gnu99 -DF_CPU=16000000UL  -O3 -funsigned-char -funsigned-bitfields  -fshort-enums -Wall -Wstrict-prototypes -mmcu=atmega328 -Wl,-u,vfprintf -lprintf_flt -lm -I$(PREFIX)/include
 
 AVRDUDE=avrdude
 

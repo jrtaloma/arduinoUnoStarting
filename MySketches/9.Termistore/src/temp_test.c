@@ -32,7 +32,7 @@ int main(void){
 		Tc = T - 273.15;
 		
 		char msg[16];
-		sprintf(msg, "Temp: %d C", (int)Tc);
+		sprintf(msg, "Temp: %.1f C", Tc);
 		LCDclr();
 		LCDstring((uint8_t*)msg, strlen(msg));
 		
