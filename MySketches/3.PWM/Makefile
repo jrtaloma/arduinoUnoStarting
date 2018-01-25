@@ -1,6 +1,6 @@
 PREFIX=.
 CC=avr-gcc
-CC_OPTS=-Wall --std=gnu99 -DF_CPU=16000000UL  -O3 -funsigned-char -funsigned-bitfields  -fshort-enums -Wall -Wstrict-prototypes -mmcu=atmega328 -I$(PREFIX)/include
+CC_OPTS=-Wall --std=gnu99 -DF_CPU=16000000UL  -O3 -funsigned-char -funsigned-bitfields  -fshort-enums -Wall -Wstrict-prototypes -mmcu=atmega328 -I$(PREFIX)/../include
 
 AVRDUDE=avrdude
 
@@ -14,11 +14,11 @@ AVRDUDE_FLAGS += $(AVRDUDE_ERASE_COUNTER)
 AVRDUDE_FLAGS += -V -F -C /etc/avrdude.conf
 
 HEADERS=delay.h\
-		digio.h\
-		pins.h\
-		pwm.h\
+	digio.h\
+	pins.h\
+	pwm.h\
 
-INCLUDES=$(addprefix $(PREFIX)/include/, $(HEADERS))
+INCLUDES=$(addprefix $(PREFIX)/../include/, $(HEADERS))
 
 OBJS=pins.o\
      delay.o\
@@ -32,7 +32,10 @@ BINS=pwm_test.elf\
 all:	$(BINS)
 
 #common objects
-%.o:	$(PREFIX)/src/%.c $(INCLUDES)
+%.o:	$(PREFIX)/../src/%.c $(INCLUDES)
+	$(CC) $(CC_OPTS) -c  $<
+
+%.o:	$(PREFIX)/%.c $(INCLUDES)
 	$(CC) $(CC_OPTS) -c  $<
 
 %.elf:	%.o $(OBJS)
