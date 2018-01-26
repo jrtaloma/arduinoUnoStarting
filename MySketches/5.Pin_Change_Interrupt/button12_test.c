@@ -25,12 +25,12 @@ void printString(char* s){
 ISR(PCINT0_vect) { /* pin change interrupt service routine */
 	buttonStatus = DigIO_getValue(buttonPin);
 	if (buttonStatus == HIGH) {
-		// turn the LED on (HIGH is the voltage level)
+		// turn the LED On
 		DigIO_setValue(pinLed, HIGH);
 		printString("On\n");
 		delayMs(1000);
 		
-		// turn the LED off by making the voltage LOW
+		// turn the LED Off
 		DigIO_setValue(pinLed, LOW);
 		printString("Off\n");
 		delayMs(1000);

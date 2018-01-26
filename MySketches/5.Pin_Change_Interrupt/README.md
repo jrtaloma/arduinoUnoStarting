@@ -1,4 +1,4 @@
-# Accensione del LED tramite interrupt
+# Accensione del LED tramite Pin Change Interrupt
 
 ![GitHub Logo](button_test.jpg)
 

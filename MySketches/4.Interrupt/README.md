@@ -1,1 +1,0 @@
-**Interrupt in AVR**: [http://www.nongnu.org/avr-libc/user-manual/group__avr__interrupts.html](http://www.nongnu.org/avr-libc/user-manual/group__avr__interrupts.html)
