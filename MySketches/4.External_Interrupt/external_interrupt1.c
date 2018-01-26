@@ -10,7 +10,7 @@
 #define LOW 0
 
 const int pinLed = 13;
-const int buttonPin = 2;
+const int buttonPin = 3; // PD3 is the port related to INT1
 
 volatile int buttonStatus = 0;
 
@@ -22,7 +22,7 @@ void printString(char* s){
 		UART_putChar(uart, (uint8_t) *s);
 }
 
-ISR(PCINT2_vect) { /* pin change interrupt service routine */
+ISR(INT1_vect) { /* external interrupt service routine */
 	buttonStatus = DigIO_getValue(buttonPin);
 	if (buttonStatus == HIGH) {
 		DigIO_setValue(pinLed, HIGH);
@@ -36,17 +36,18 @@ ISR(PCINT2_vect) { /* pin change interrupt service routine */
 }
 
 int main(void){
-	uart=UART_init("uart_0", 115200);	
-
+	uart=UART_init("uart_0", 115200);
+	
 	DigIO_setDirection(pinLed, Output); // pinLed as an output
 	
-	DigIO_setDirection(buttonPin, Input); // buttonPin as an input
-	DigIO_setValue(buttonPin, HIGH); // pull up resistor on buttonPin
-	PCICR = (1<<PCIE2); // enable Pin Change 2 interrupt
-	PCMSK2 = (1<<PCINT18);
+	DigIO_setDirection(buttonPin, Input); // PD3 as an input
+	DigIO_setValue(buttonPin, HIGH); // pull up resistor on PD3
+	EIMSK = (1<<INT1); // Turns On INT1
+	EICRA = (1<<ISC11)|(1<<ISC10); // The rising edge of INT1 generates an interrupt request | The falling edge of INT1 generates an interrupt request
 	
 	sei(); // enable interrupts globally
 	
+	// this loop does nothing
 	while(1){}
 	
 	return 0;

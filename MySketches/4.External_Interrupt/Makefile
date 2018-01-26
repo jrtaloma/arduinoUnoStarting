@@ -25,7 +25,8 @@ OBJS=pins.o\
      digio.o\
      uart.o\
 
-BINS=external_interrupt.elf\
+BINS=external_interrupt0.elf\
+     external_interrupt1.elf\
 
 .phony:	clean all
 

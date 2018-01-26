@@ -25,22 +25,19 @@ void printString(char* s){
 ISR(PCINT0_vect) { /* pin change interrupt service routine */
 	buttonStatus = DigIO_getValue(buttonPin);
 	if (buttonStatus == HIGH) {
-		// turn the LED On
 		DigIO_setValue(pinLed, HIGH);
 		printString("On\n");
-		delayMs(1000);
+		delayMs(500);
 		
-		// turn the LED Off
 		DigIO_setValue(pinLed, LOW);
 		printString("Off\n");
-		delayMs(1000);
+		delayMs(500);
 	}	
 }
 
 int main(void){
-	cli(); // disable interrupts globally
-	
-	// 1. this is the setup routine
+	uart=UART_init("uart_0", 115200);
+
 	DigIO_setDirection(pinLed, Output); // pinLed as an output
 	
 	DigIO_setDirection(buttonPin, Input); // buttonPin as an input
@@ -48,11 +45,8 @@ int main(void){
 	PCICR = (1<<PCIE0); // enable Pin Change 0 interrupt
 	PCMSK0 = (1<<PCINT4);
 	
-	uart=UART_init("uart_0", 115200);
-	
 	sei(); // enable interrupts globally
 	
-	// 2. this loop does nothing
 	while(1){}
 	
 	return 0;

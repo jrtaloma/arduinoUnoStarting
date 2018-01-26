@@ -25,12 +25,10 @@ void printString(char* s){
 ISR(INT0_vect) { /* external interrupt service routine */
 	buttonStatus = DigIO_getValue(buttonPin);
 	if (buttonStatus == HIGH) {
-		// turn the LED On
 		DigIO_setValue(pinLed, HIGH);
 		printString("On\n");
 		delayMs(500);
 		
-		// turn the LED Off
 		DigIO_setValue(pinLed, LOW);
 		printString("Off\n");
 		delayMs(500);
@@ -38,8 +36,6 @@ ISR(INT0_vect) { /* external interrupt service routine */
 }
 
 int main(void){
-	cli(); // disable interrupts globally
-	
 	uart=UART_init("uart_0", 115200);
 	
 	DigIO_setDirection(pinLed, Output); // pinLed as an output
@@ -47,7 +43,7 @@ int main(void){
 	DigIO_setDirection(buttonPin, Input); // PD2 as an input
 	DigIO_setValue(buttonPin, HIGH); // pull up resistor on PD2
 	EIMSK = (1<<INT0); // Turns On INT0
-	EICRA = (1<<ISC01)|(1<<ISC00); // The low level of INT0 generates an interrupt request || Any logical change on INT0 generates an interrupt request
+	EICRA = (1<<ISC01)|(1<<ISC00); // The low level of INT0 generates an interrupt request | Any logical change on INT0 generates an interrupt request
 	
 	sei(); // enable interrupts globally
 	
