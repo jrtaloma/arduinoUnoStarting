@@ -17,7 +17,7 @@ volatile int yellowON = 0;
 volatile int greenON = 0;
 
 void timerFn(void* args){
-	if (yellowON || (!redON && !yellowON && !greenON)) {
+	if (yellowON) {
 		yellowON = 0;
 		redON = 1;
 	}	
@@ -39,6 +39,8 @@ int main(void){
 	DigIO_setDirection(redLED, Output);
 	DigIO_setDirection(yellowLED, Output);
 	DigIO_setDirection(greenLED, Output);
+	
+	redON = 1;
 	
 	struct Timer* timer=Timer_create("timer_0", 4000, timerFn, NULL);
 	Timer_start(timer);
