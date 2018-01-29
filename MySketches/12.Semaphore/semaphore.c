@@ -42,7 +42,7 @@ int main(void){
 	
 	redON = 1;
 	
-	struct Timer* timer=Timer_create("timer_0", 4000, timerFn, NULL);
+	struct Timer* timer=Timer_create("timer_0", 4195, timerFn, NULL); // 4195 ms is the maximum delay supported by TIMER1 (16 bit): a greater value causes overflow 
 	Timer_start(timer);
 	
 	while(1) {
