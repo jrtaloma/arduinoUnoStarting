@@ -16,7 +16,7 @@ void printString(char* s){
 
 int main(void){	
 	uart=UART_init("uart_0",115200);
-	spi_init_slave(); //Initialize slave SPI
+	SPI_SlaveInit();
 	unsigned char data;
 	char tx_buffer[300];
 	char rx_buffer[300];
@@ -24,7 +24,7 @@ int main(void){
 	int size = 0;
 	
 	while(1){
-		data = spi_tranceiver(ACK);
+		data = SPI_tranceiver(ACK);
 		rx_buffer[size] = data;
 		++size;
 		rx_buffer[size] = 0;

@@ -1,13 +1,14 @@
 #pragma once
+#include <stdint.h>
 
 // Initialize SPI Master Device
-void spi_init_master(void);
+void SPI_MasterInit(void);
 
 // Initialize SPI Slave Device
-void spi_init_slave(void);
+void SPI_SlaveInit(void);
 
 // Function to send and receive a single data
-unsigned char spi_tranceiver(unsigned char data);
+uint8_t SPI_tranceiver(uint8_t data);
 
 // Function to send a string
-void printStringSPI(char* s);
+void SPI_sendString(char* s);

@@ -2,10 +2,10 @@
 #include "spi.h"
  
 int main(void) {
-	spi_init_master();                                   
+	SPI_MasterInit();                                   
  
 	while(1) {
-		printStringSPI("Hello World\n");
+		SPI_sendString("Hello World\n");
 		delayMs(1500);
 	}
 }
