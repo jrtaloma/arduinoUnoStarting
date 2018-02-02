@@ -38,15 +38,13 @@ ISR(ADC_vect) {
 
 int main(void){
 	
-	cli(); // disable global interrupts
-	
 	DigIO_setDirection(led, Output); // initialize the digital pin as an output
 
 	uart=UART_init("uart_0", 115200);
 	
 	adc_init(); // initialize adc
 	
-	ADCSRA |= (1<<ADIE); // enable ADC interrupt
+	adc_enableInterrupt(); // enable ADC interrupt
 	
 	sei(); // enable global interrupts
 	

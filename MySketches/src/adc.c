@@ -8,6 +8,10 @@ void adc_init(void) {
 	ADCSRA = (1<<ADEN)|(1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0);
 }
 
+void adc_enableInterrupt(void) {
+	ADCSRA |= (1<<ADIE);
+}
+
 uint16_t adc_read(uint8_t ch) {
 	// analog input channels in Arduino Uno: A0 A1 A2 A3 A4 A5
 	if (ch > 5) ch = 0;
