@@ -2,7 +2,7 @@
 
 `$ sudo apt-get install arduino-mk`
 
-Il video mostra come configurare Linux per programmare Arduino senza l'IDE ma con tutte le funzioni offerte dalle librerie Arduino standard + le librerie esterne importate nella cartella (libraries)[libraries].
+Il video mostra come configurare Linux per programmare Arduino senza l'IDE ma con tutte le funzioni offerte dalle librerie Arduino standard + le librerie esterne importate nella cartella [libraries](libraries).
 
 Sono riproposti alcuni degli esempi in MyScketches modificati per utilizzare insieme Wiring e AVR.
 

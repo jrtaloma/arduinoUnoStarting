@@ -18,10 +18,11 @@ ISR(ADC_vect) {
 
 void setup(){
 	pinMode(led, OUTPUT); // initialize the digital pin as an output
+	adc_init();	
 	adc_enableInterrupt(); // enable ADC interrupt
 	sei(); // enable global interrupts
 }
 
 void loop() {
-	adc_value = analogRead(5); // read adc value at A5
+	adc_value = adc_read(5); // read adc value at A5
 }
