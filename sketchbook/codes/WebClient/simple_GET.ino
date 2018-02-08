@@ -1,14 +1,15 @@
+#include <stdlib.h>
 #include <Ethernet.h>
 #include <SPI.h>
 #include "RestClient.h"
 #include "ArduinoJson.h"
 
+#define BUF_SIZE 450
+
 const char* APIKEY = "b011edc116685d89dfdc35517d9ce205";
 const char* CityID = "3169070";
 
 RestClient client = RestClient("api.openweathermap.org");
-
-String response;
 
 const char* weatherDescription;
 const char* weatherLocation;
@@ -29,7 +30,13 @@ void setup() {
 }
 
 void loop(){
-	response = "";
+	char* response = (char*) malloc(sizeof(char)*BUF_SIZE);
+	if (response == NULL) {
+		Serial.println("response allocation on heap FAIL");
+		while(1);
+	}
+	response[0] = 0;
+	
 	const char* path = "/data/2.5/weather?id=3169070&units=metric&APPID=b011edc116685d89dfdc35517d9ce205";
 	int statusCode = client.get(path, &response);
 	Serial.print("Status code from server: ");
@@ -39,7 +46,7 @@ void loop(){
 	
 	delay(10);
 	
-	DynamicJsonBuffer jsonBuffer(1024);
+	DynamicJsonBuffer jsonBuffer(800);
 	JsonObject& root = jsonBuffer.parseObject(response);
 
 	if (!root.success()) {
@@ -63,6 +70,8 @@ void loop(){
 	Serial.print("Temperature: "); 
 	Serial.print(Temperature);
 	Serial.println(" C");
+	
+	free(response);
 	
 	while(1);
 }

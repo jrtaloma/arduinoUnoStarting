@@ -46,7 +46,7 @@ int RestClient::get(const char* path){
 }
 
 //GET path with response
-int RestClient::get(const char* path, String* response){
+int RestClient::get(const char* path, char** response){
   return request("GET", path, NULL, response);
 }
 
@@ -56,7 +56,7 @@ int RestClient::post(const char* path, const char* body){
 }
 
 // POST path and body with response
-int RestClient::post(const char* path, const char* body, String* response){
+int RestClient::post(const char* path, const char* body, char** response){
   return request("POST", path, body, response);
 }
 
@@ -66,7 +66,7 @@ int RestClient::put(const char* path, const char* body){
 }
 
 // PUT path and body with response
-int RestClient::put(const char* path, const char* body, String* response){
+int RestClient::put(const char* path, const char* body, char** response){
   return request("PUT", path, body, response);
 }
 
@@ -76,7 +76,7 @@ int RestClient::del(const char* path){
 }
 
 // DELETE path and response
-int RestClient::del(const char* path, String* response){
+int RestClient::del(const char* path, char** response){
   return request("DELETE", path, NULL, response);
 }
 
@@ -86,7 +86,7 @@ int RestClient::del(const char* path, const char* body ){
 }
 
 // DELETE path and body with response
-int RestClient::del(const char* path, const char* body, String* response){
+int RestClient::del(const char* path, const char* body, char** response){
   return request("DELETE", path, body, response);
 }
 
@@ -107,7 +107,7 @@ void RestClient::setContentType(const char* contentTypeValue){
 // The mother- generic request method.
 //
 int RestClient::request(const char* method, const char* path,
-                  const char* body, String* response){
+                  const char* body, char** response){
 
   HTTP_DEBUG_PRINT("HTTP: connect\n");
 
@@ -167,7 +167,7 @@ int RestClient::request(const char* method, const char* path,
   }
 }
 
-int RestClient::readResponse(String* response) {
+int RestClient::readResponse(char** response) {
 
   // an http request ends with a blank line
   boolean currentLineIsBlank = true;
@@ -177,6 +177,8 @@ int RestClient::readResponse(String* response) {
   char statusCode[4];
   int i = 0;
   int code = 0;
+
+  int size = 0;
 
   if(response == NULL){
     HTTP_DEBUG_PRINT("HTTP: NULL RESPONSE POINTER: \n");
@@ -209,7 +211,11 @@ int RestClient::readResponse(String* response) {
 
       if(httpBody){
         //only write response if its not null
-        if(response != NULL) response->concat(c);
+        if(response != NULL) {
+			(*response)[size] = c;
+			++size;
+			(*response)[size] = 0;
+        }
       }
       else
       {
