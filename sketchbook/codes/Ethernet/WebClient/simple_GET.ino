@@ -46,7 +46,7 @@ void loop(){
 	
 	delay(10);
 	
-	DynamicJsonBuffer jsonBuffer(800);
+	DynamicJsonBuffer jsonBuffer;
 	JsonObject& root = jsonBuffer.parseObject(response);
 
 	if (!root.success()) {
