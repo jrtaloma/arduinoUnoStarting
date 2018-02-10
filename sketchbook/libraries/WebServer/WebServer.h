@@ -62,7 +62,7 @@
 #endif
 
 #ifndef WEBDUINO_FAIL_MESSAGE
-#define WEBDUINO_FAIL_MESSAGE "<h1>EPIC FAIL</h1>"
+#define WEBDUINO_FAIL_MESSAGE "<h1>404 Page not found</h1>"
 #endif
 
 #ifndef WEBDUINO_AUTH_REALM
