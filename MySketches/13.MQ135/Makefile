@@ -16,6 +16,8 @@ AVRDUDE_FLAGS += -V -F -C /etc/avrdude.conf
 HEADERS=adc.h\
 	delay.h\
 	lcd_lib.h\
+	pins.h\
+	pwm.h\
 	uart.h\
 
 INCLUDES=$(addprefix $(PREFIX)/../include/, $(HEADERS))
@@ -23,6 +25,8 @@ INCLUDES=$(addprefix $(PREFIX)/../include/, $(HEADERS))
 OBJS=adc.o\
      delay.o\
      lcd_lib.o\
+     pins.o\
+     pwm.o\
      uart.o\
 
 BINS=MQ135_test.elf\
