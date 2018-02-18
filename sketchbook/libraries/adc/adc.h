@@ -5,7 +5,7 @@
 void adc_init(void);
 
 /* initialize adc with a specific prescaler */
-void adc_init_with_prescaler(uint32_t prescaler);
+void adc_init_with_prescaler(uint8_t prescaler);
 
 /* enable ADC_vect Interrupt */
 void adc_enableInterrupt(void);

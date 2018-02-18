@@ -8,7 +8,7 @@ void adc_init(void) {
 }
 
 /* ADC enable and set prescaler */
-void adc_init_with_prescaler(uint32_t prescaler) {
+void adc_init_with_prescaler(uint8_t prescaler) {
 	ADMUX = (1<<REFS0);
 	
 	switch(prescaler) {
