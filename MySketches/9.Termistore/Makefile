@@ -16,14 +16,17 @@ AVRDUDE_FLAGS += -V -F -C /etc/avrdude.conf
 HEADERS=delay.h\
 	lcd_lib.h\
 	adc.h\
+	uart.h\
 
 INCLUDES=$(addprefix $(PREFIX)/../include/, $(HEADERS))
 
 OBJS=delay.o\
      lcd_lib.o\
      adc.o\
+     uart.o\
 
 BINS=temp_test.elf\
+     temp_serial.elf\
 
 .phony:	clean all
 
