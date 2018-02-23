@@ -14,13 +14,13 @@ AVRDUDE_FLAGS += $(AVRDUDE_ERASE_COUNTER)
 AVRDUDE_FLAGS += -V -F -C /etc/avrdude.conf
 
 HEADERS=delay.h\
-		digio.h\
-		eeprom.h\
-		encoder.h\
-		pins.h\
-		pwm.h\
-		timer.h\
-		uart.h\
+	digio.h\
+	eeprom.h\
+	encoder.h\
+	pins.h\
+	pwm.h\
+	timer.h\
+	uart.h\
 
 INCLUDES=$(addprefix $(PREFIX)/include/, $(HEADERS))
 
@@ -39,6 +39,7 @@ BINS= uart_test.elf\
       eeprom_test.elf\
       digio_test.elf\
       pwm_test.elf\
+      read_uart.elf\
 
 .phony:	clean all
 
