@@ -2,8 +2,6 @@
 #include <string.h>
 #include "uart.h"
 #include "spi.h"
-
-#define ACK 0x7E
  
 struct UART* uart; 
 
@@ -25,7 +23,7 @@ void setup() {
 }	
 
 void loop() {
-	data = SPI_tranceiver(ACK);
+	data = SPI_SlaveReceive();
 	rx_buffer[size] = data;
 	++size;
 	rx_buffer[size] = 0;
