@@ -4,7 +4,7 @@
 #include <string.h>
 
 void SPI_MasterInit(void){
-	DDRB = (1<<5)|(1<<3); // set SCK, MOSI as Output
+	DDRB = (1<<5)|(1<<3)|(1<<2); // set SCK, MOSI, SS as Output
 	SPCR = (1<<SPE)|(1<<MSTR)|(1<<SPR0); // enable SPI, set as Master, prescaler: fck/16
 }
 
