@@ -17,6 +17,7 @@ HEADERS=delay.h\
 	digio.h\
 	pins.h\
 	uart.h\
+	lcd.h\
 	lcd_lib.h\
 
 INCLUDES=$(addprefix $(PREFIX)/../include/, $(HEADERS))
@@ -25,10 +26,12 @@ OBJS=pins.o\
      delay.o\
      digio.o\
      uart.o\
+     lcd.o\
      lcd_lib.o\
 
 BINS=blink_test.elf\
      main.elf\
+     test_lcd.elf\
 
 .phony:	clean all
 
