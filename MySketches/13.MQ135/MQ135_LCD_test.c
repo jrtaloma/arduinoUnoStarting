@@ -1,6 +1,6 @@
 #include "adc.h"
 #include "delay.h"
-#include "lcd_lib.h"
+#include "lcd.h"
 #include "pwm.h"
 #include <stdio.h>
 #include <string.h>
@@ -15,16 +15,15 @@ int main(void) {
 	
 	adc_init();
 	
-	LCDinit();
-	LCDcursorOFF();
+	lcd_init(LCD_DISP_ON);
 	
 	char msg[8];
 
 	while(1) {
-		LCDclr();
+		lcd_clrscr();
 		int sensorValue = adc_read(sensorPin);
 		sprintf(msg, "%d", sensorValue);
-		LCDstring((uint8_t*)msg, strlen(msg));
+		lcd_puts(msg);
 		delayMs(500);
 	}
 }

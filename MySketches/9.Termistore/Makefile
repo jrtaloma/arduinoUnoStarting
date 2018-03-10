@@ -14,19 +14,19 @@ AVRDUDE_FLAGS += $(AVRDUDE_ERASE_COUNTER)
 AVRDUDE_FLAGS += -V -F -C /etc/avrdude.conf
 
 HEADERS=delay.h\
-	lcd_lib.h\
+	lcd.h\
 	adc.h\
 	uart.h\
 
 INCLUDES=$(addprefix $(PREFIX)/../include/, $(HEADERS))
 
 OBJS=delay.o\
-     lcd_lib.o\
+     lcd.o\
      adc.o\
      uart.o\
 
-BINS=temp_test.elf\
-     temp_serial.elf\
+BINS=temp_serial.elf\
+     temp_LCD_test.elf\
 
 .phony:	clean all
 

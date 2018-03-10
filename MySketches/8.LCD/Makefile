@@ -31,7 +31,7 @@ OBJS=pins.o\
 
 BINS=blink_test.elf\
      main.elf\
-     test_lcd.elf\
+     lcd_test.elf\
 
 .phony:	clean all
 

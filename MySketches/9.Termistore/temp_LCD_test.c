@@ -1,6 +1,6 @@
 #include "adc.h"
 #include "delay.h"
-#include "lcd_lib.h"
+#include "lcd.h"
 #include <avr/io.h>
 #include <avr/pgmspace.h>
 #include <stdio.h>
@@ -9,7 +9,7 @@
 
 int ThermistorPin = 0;
 int Vo;
-float R1 = 13000;
+float R1 = 11000;
 float logR2, R2, T, Tc, Tf;
 float c1 = 1.009249522e-03, c2 = 2.378405444e-04, c3 = 2.019202697e-07;
 
@@ -19,9 +19,7 @@ int main(void){
 	adc_init();
 	
 	// initialize LCD screen
-	LCDinit();
-	LCDclr();
-	LCDcursorOFF();
+	lcd_init(LCD_DISP_ON);
 	
 	while(1){
 		Vo = adc_read(ThermistorPin);
@@ -32,8 +30,8 @@ int main(void){
 		
 		char msg[16];
 		sprintf(msg, "Temp: %.1f C", Tc);
-		LCDclr();
-		LCDstring((uint8_t*)msg, strlen(msg));
+		lcd_clrscr();
+		lcd_puts(msg);
 		
 		delayMs(1500);
 	}

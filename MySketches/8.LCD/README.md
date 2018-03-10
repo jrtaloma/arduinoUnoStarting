@@ -1,23 +1,21 @@
-# LCD
+# LCD - 4-bit Mode
 
-Seguire le istruzioni al link seguente per configurare il PinMapping.
+Seguire le istruzioni di uno dei due link seguenti per configurare il PinMapping.
 
 **AVR-GCC 4 bit and 8 bit LCD library**: [http://winavr.scienceprog.com/example-avr-projects/avr-gcc-4-bit-and-8-bit-lcd-library.html](http://winavr.scienceprog.com/example-avr-projects/avr-gcc-4-bit-and-8-bit-lcd-library.html)
 
-Personalmente ho scelto di configurare i registri dello schermo LCD per ricreare lo stesso circuito in [Appunti su Arduino: pilotare un display LCD](http://www.maffucci.it/2012/02/17/appunti-su-arduino-pilotare-un-display-lcd/).
+**Interfacing a HD44780 Based LCD to an AVR**: [http://homepage.hispeed.ch/peterfleury/doxygen/avr-gcc-libraries/group__pfleury__lcd.html](http://homepage.hispeed.ch/peterfleury/doxygen/avr-gcc-libraries/group__pfleury__lcd.html)
 
-![GitHub Logo](http://www.maffucci.it/wp-content/uploads/2012/02/collegamenti-lcd.jpg)
+L'immagine mostra un'applicazione dell'LCD: si osservino i collegamenti.
+
+![GitHub Logo](circuit.jpg)
 
 **Compilazione, flashing su Arduino ed esecuzione**
 
-`$ make main.hex` // questo è l'esempio ufficiale della libreria
+`$ make main.hex` // questo è l'esempio ufficiale della prima libreria
 
 `$ make blink_test.hex`
 
-**Monitorare i messaggi di output di Arduino con il mio programma**: `$ ./myScreen`
+`$ make lcd_test.hex` // questo è un esempio della seconda libreria
 
-In alternativa installare il tool più usato:
-
-`$ sudo apt-get install screen`
-
-`$ screen /dev/ttyACM0 115200`
+**N.B.**: negli sketches successivi userò solo la libreria di Peter Fleury perché è compatibile con l'ATmega2560 cambiando opportunamente le porte.
